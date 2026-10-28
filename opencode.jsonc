@@ -1,0 +1,17 @@
+// If using OpenCode: https://opencode.ai/v2/docs/mcp-servers#remote
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "servers": {
+      "enframe": {
+        "type": "remote",
+        "protocol": "2026-07-28",
+        "url": "http://localhost.guanchen.nl:8080/mcp",
+        "oauth": {
+          "client_id": "b6997777-3799-4c55-b78a-4ce96e3d959c",
+          "redirect_uri": "http://localhost:6276/oauth/callback"
+        }
+      }
+    }
+  }
+}

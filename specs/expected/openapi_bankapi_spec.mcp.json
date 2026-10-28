@@ -1,0 +1,923 @@
+[
+  {
+    "name": "GetAllBanks",
+    "title": "Get all banks",
+    "description": "Get all banks in the Netherlands.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "examples": [
+            {
+              "page": 1,
+              "pageSize": 21,
+              "sort": "bankTier desc, name",
+              "filter": "isCompliant = true"
+            }
+          ],
+          "type": "object",
+          "properties": {
+            "page": {
+              "maximum": 70707070,
+              "minimum": 1,
+              "type": "integer",
+              "description": "The page of the result.",
+              "format": "int32",
+              "default": 1
+            },
+            "pageSize": {
+              "maximum": 70707070,
+              "minimum": 1,
+              "type": "integer",
+              "description": "The pagesize of the result.",
+              "format": "int32",
+              "default": 21
+            },
+            "sort": {
+              "maxLength": 70707070,
+              "pattern": ".*",
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "The sorting query expression can be built with a comma-delimited sorted list of field/property names, followed by \u0060asc\u0060 or \u0060desc\u0060 keywords. \n\nBy default, if you don\u0027t add these keywords, the API assumes you need Ascending sorting."
+            },
+            "filter": {
+              "maxLength": 70707070,
+              "pattern": ".*",
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "The following filter operators are supported:\n\n### Conditional Operators\n\n| Name                  | Operator | Usage example        |\n|-----------------------|----------|----------------------|\n| Equal                 | \u0060=\u0060      | \u0060FieldName = Value\u0060  |\n| NotEqual              | \u0060!=\u0060     | \u0060FieldName !=Value\u0060  |\n| LessThan              | \u0060\u003C\u0060      | \u0060FieldName \u003C Value\u0060  |\n| GreaterThan           | \u0060\u003E\u0060      | \u0060FieldName \u003E Value\u0060  |\n| GreaterThanOrEqual    | \u0060\u003E=\u0060     | \u0060FieldName \u003E=Value\u0060  |\n| LessThanOrEqual       | \u0060\u003C=\u0060     | \u0060FieldName \u003C=Value\u0060  |\n| Contains - Like       | \u0060=*\u0060     | \u0060FieldName =*Value\u0060  |\n| NotContains - NotLike | \u0060!*\u0060     | \u0060FieldName !*Value\u0060  |\n| StartsWith            | \u0060^\u0060      | \u0060FieldName ^ Value\u0060  |\n| NotStartsWith         | \u0060!^\u0060     | \u0060FieldName !^ Value\u0060 |\n| EndsWith              | \u0060$\u0060      | \u0060FieldName $ Value\u0060  |\n| NotEndsWith           | \u0060!$\u0060     | \u0060FieldName !$ Value\u0060 |\n\n\u003E Tip: If you don\u0027t specify any value after \u0060=\u0060 or \u0060!=\u0060 operators, the API searches for the \u0060default\u0060 and \u0060null\u0060 values.\n\n### Logical Operators\n\n| Name        | Operator | Usage example                                   |\n|-------------|----------|-------------------------------------------------|\n| AND         | \u0060,\u0060      | \u0060FirstName = Value, LastName = Value2\u0060          |\n| OR          | \u0060\\|\u0060     | \u0060FirstName=Value\\|LastName=Value2\u0060              |\n| Parenthesis | \u0060()\u0060     | \u0060(FirstName=*Jo,Age\u003C30)\\|(FirstName!=Hn,Age\u003E30)\u0060|\n\n### Case Insensitive Operator\n\nThe \u0060/i\u0060 operator can be use after string values for case insensitive searches. You should only use this operator after the search value. \n\nExample:\n\u0060\u0060\u0060\nFirstName=John/i\n\u0060\u0060\u0060\n\nthis query matches with \u0060JOHN\u0060, \u0060john\u0060, \u0060John\u0060, \u0060jOHn\u0060, etc."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "body"
+      ]
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "description": "The HTTP status code of the response."
+        },
+        "headers": {
+          "type": "object",
+          "description": "The response headers the API declares for this operation.",
+          "properties": {
+            "API-Version": {
+              "type": "string"
+            },
+            "Access-Control-Allow-Origin": {
+              "type": "string"
+            },
+            "Access-Control-Expose-Headers": {
+              "type": "string"
+            },
+            "X-JWS-Signature": {
+              "type": "string"
+            },
+            "X-Rate-Limit-Limit": {
+              "type": "string",
+              "description": "The maximum number of requests you\u0027re permitted to make in a window of 2 minutes."
+            }
+          }
+        },
+        "body": {
+          "examples": [
+            {
+              "count": 2,
+              "data": [
+                {
+                  "id": "24d1f3c4-a1d3-477f-9ca6-b611997e8343",
+                  "name": "Foo",
+                  "isCompliant": true,
+                  "bankTier": "A"
+                },
+                {
+                  "id": "956b7056-6e98-4a92-af07-91634ce4d421",
+                  "name": "Bar",
+                  "isCompliant": false,
+                  "bankTier": "B"
+                }
+              ]
+            }
+          ],
+          "type": "object",
+          "properties": {
+            "count": {
+              "maximum": 70707070,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            },
+            "data": {
+              "maxItems": 70707070,
+              "type": "array",
+              "items": {
+                "examples": [
+                  {
+                    "id": "24d1f3c4-a1d3-477f-9ca6-b611997e8343",
+                    "name": "Guanchen",
+                    "isCompliant": true,
+                    "bankTier": "A"
+                  },
+                  {
+                    "id": "956b7056-6e98-4a92-af07-91634ce4d421",
+                    "name": "Canary",
+                    "isCompliant": false,
+                    "bankTier": "C"
+                  }
+                ],
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "maxLength": 36,
+                    "type": "string",
+                    "description": "Id of the bank.",
+                    "format": "uuid"
+                  },
+                  "name": {
+                    "maxLength": 70707070,
+                    "pattern": ".*",
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "description": "Name of the bank.",
+                    "default": "Guanchen"
+                  },
+                  "isCompliant": {
+                    "type": "boolean",
+                    "description": "Compliancy status of the bank.",
+                    "default": true
+                  },
+                  "bankTier": {
+                    "enum": [
+                      "A",
+                      "B",
+                      "C"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "status",
+        "body"
+      ]
+    },
+    "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "readOnlyHint": true
+    },
+    "_meta": {
+      "tags": [
+        "Supervisory"
+      ]
+    }
+  },
+  {
+    "name": "CreateBank",
+    "title": "Create a bank",
+    "description": "Create a bank in the Netherlands.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "examples": [
+            {
+              "id": "24d1f3c4-a1d3-477f-9ca6-b611997e8343",
+              "name": "Guanchen",
+              "isCompliant": true,
+              "bankTier": "A"
+            },
+            {
+              "id": "956b7056-6e98-4a92-af07-91634ce4d421",
+              "name": "Canary",
+              "isCompliant": false,
+              "bankTier": "C"
+            }
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "maxLength": 36,
+              "type": "string",
+              "description": "Id of the bank.",
+              "format": "uuid"
+            },
+            "name": {
+              "maxLength": 70707070,
+              "pattern": ".*",
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Name of the bank.",
+              "default": "Guanchen"
+            },
+            "isCompliant": {
+              "type": "boolean",
+              "description": "Compliancy status of the bank.",
+              "default": true
+            },
+            "bankTier": {
+              "enum": [
+                "A",
+                "B",
+                "C"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "body"
+      ]
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "description": "The HTTP status code of the response."
+        },
+        "headers": {
+          "type": "object",
+          "description": "The response headers the API declares for this operation.",
+          "properties": {
+            "API-Version": {
+              "type": "string"
+            },
+            "Access-Control-Allow-Origin": {
+              "type": "string"
+            },
+            "Access-Control-Expose-Headers": {
+              "type": "string"
+            },
+            "X-JWS-Signature": {
+              "type": "string"
+            },
+            "X-Rate-Limit-Limit": {
+              "type": "string",
+              "description": "The maximum number of requests you\u0027re permitted to make in a window of 2 minutes."
+            },
+            "ETag": {
+              "type": "string",
+              "description": "Current entity tag for optimistic concurrency. Send this value in the \u0027If-Match\u0027 header when doing update requests."
+            }
+          }
+        },
+        "body": {
+          "examples": [
+            {
+              "id": "24d1f3c4-a1d3-477f-9ca6-b611997e8343",
+              "name": "Guanchen",
+              "isCompliant": true,
+              "bankTier": "A"
+            },
+            {
+              "id": "956b7056-6e98-4a92-af07-91634ce4d421",
+              "name": "Canary",
+              "isCompliant": false,
+              "bankTier": "C"
+            }
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "maxLength": 36,
+              "type": "string",
+              "description": "Id of the bank.",
+              "format": "uuid"
+            },
+            "name": {
+              "maxLength": 70707070,
+              "pattern": ".*",
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Name of the bank.",
+              "default": "Guanchen"
+            },
+            "isCompliant": {
+              "type": "boolean",
+              "description": "Compliancy status of the bank.",
+              "default": true
+            },
+            "bankTier": {
+              "enum": [
+                "A",
+                "B",
+                "C"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "status",
+        "body"
+      ]
+    },
+    "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "readOnlyHint": false
+    },
+    "_meta": {
+      "tags": [
+        "Supervisory"
+      ]
+    }
+  },
+  {
+    "name": "GetBank",
+    "title": "Get a bank",
+    "description": "Get a bank in the Netherlands.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "maxLength": 36,
+          "type": "string",
+          "format": "uuid",
+          "description": "Id of the bank."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "description": "The HTTP status code of the response."
+        },
+        "headers": {
+          "type": "object",
+          "description": "The response headers the API declares for this operation.",
+          "properties": {
+            "API-Version": {
+              "type": "string"
+            },
+            "Access-Control-Allow-Origin": {
+              "type": "string"
+            },
+            "Access-Control-Expose-Headers": {
+              "type": "string"
+            },
+            "X-JWS-Signature": {
+              "type": "string"
+            },
+            "X-Rate-Limit-Limit": {
+              "type": "string",
+              "description": "The maximum number of requests you\u0027re permitted to make in a window of 2 minutes."
+            },
+            "ETag": {
+              "type": "string",
+              "description": "Current entity tag for optimistic concurrency. Send this value in the \u0027If-Match\u0027 header when doing update requests."
+            }
+          }
+        },
+        "body": {
+          "examples": [
+            {
+              "id": "24d1f3c4-a1d3-477f-9ca6-b611997e8343",
+              "name": "Guanchen",
+              "isCompliant": true,
+              "bankTier": "A"
+            },
+            {
+              "id": "956b7056-6e98-4a92-af07-91634ce4d421",
+              "name": "Canary",
+              "isCompliant": false,
+              "bankTier": "C"
+            }
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "maxLength": 36,
+              "type": "string",
+              "description": "Id of the bank.",
+              "format": "uuid"
+            },
+            "name": {
+              "maxLength": 70707070,
+              "pattern": ".*",
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Name of the bank.",
+              "default": "Guanchen"
+            },
+            "isCompliant": {
+              "type": "boolean",
+              "description": "Compliancy status of the bank.",
+              "default": true
+            },
+            "bankTier": {
+              "enum": [
+                "A",
+                "B",
+                "C"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "status",
+        "body"
+      ]
+    },
+    "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "readOnlyHint": true
+    },
+    "_meta": {
+      "tags": [
+        "Supervisory"
+      ]
+    }
+  },
+  {
+    "name": "UpdateBank",
+    "title": "Update a bank",
+    "description": "Update a bank in the Netherlands.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "maxLength": 36,
+          "type": "string",
+          "format": "uuid",
+          "description": "Id of the bank."
+        },
+        "If-Match": {
+          "maxLength": 70707070,
+          "pattern": ".*",
+          "type": "string",
+          "description": "Current entity tag for optimistic concurrency."
+        },
+        "body": {
+          "examples": [
+            {
+              "id": "24d1f3c4-a1d3-477f-9ca6-b611997e8343",
+              "name": "Guanchen",
+              "isCompliant": true,
+              "bankTier": "A"
+            },
+            {
+              "id": "956b7056-6e98-4a92-af07-91634ce4d421",
+              "name": "Canary",
+              "isCompliant": false,
+              "bankTier": "C"
+            }
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "maxLength": 36,
+              "type": "string",
+              "description": "Id of the bank.",
+              "format": "uuid"
+            },
+            "name": {
+              "maxLength": 70707070,
+              "pattern": ".*",
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "Name of the bank.",
+              "default": "Guanchen"
+            },
+            "isCompliant": {
+              "type": "boolean",
+              "description": "Compliancy status of the bank.",
+              "default": true
+            },
+            "bankTier": {
+              "enum": [
+                "A",
+                "B",
+                "C"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "If-Match",
+        "body"
+      ]
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "description": "The HTTP status code of the response."
+        },
+        "headers": {
+          "type": "object",
+          "description": "The response headers the API declares for this operation.",
+          "properties": {
+            "API-Version": {
+              "type": "string"
+            },
+            "Access-Control-Allow-Origin": {
+              "type": "string"
+            },
+            "Access-Control-Expose-Headers": {
+              "type": "string"
+            },
+            "X-JWS-Signature": {
+              "type": "string"
+            },
+            "X-Rate-Limit-Limit": {
+              "type": "string",
+              "description": "The maximum number of requests you\u0027re permitted to make in a window of 2 minutes."
+            }
+          }
+        }
+      },
+      "required": [
+        "status"
+      ]
+    },
+    "annotations": {
+      "destructiveHint": true,
+      "idempotentHint": true,
+      "readOnlyHint": false
+    },
+    "_meta": {
+      "tags": [
+        "Supervisory"
+      ]
+    }
+  },
+  {
+    "name": "DeleteBank",
+    "title": "Delete a bank",
+    "description": "Delete a bank in the Netherlands.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "maxLength": 36,
+          "type": "string",
+          "format": "uuid",
+          "description": "Id of the bank."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "description": "The HTTP status code of the response."
+        },
+        "headers": {
+          "type": "object",
+          "description": "The response headers the API declares for this operation.",
+          "properties": {
+            "API-Version": {
+              "type": "string"
+            },
+            "Access-Control-Allow-Origin": {
+              "type": "string"
+            },
+            "Access-Control-Expose-Headers": {
+              "type": "string"
+            },
+            "X-JWS-Signature": {
+              "type": "string"
+            },
+            "X-Rate-Limit-Limit": {
+              "type": "string",
+              "description": "The maximum number of requests you\u0027re permitted to make in a window of 2 minutes."
+            }
+          }
+        }
+      },
+      "required": [
+        "status"
+      ]
+    },
+    "annotations": {
+      "destructiveHint": true,
+      "idempotentHint": true,
+      "readOnlyHint": false
+    },
+    "_meta": {
+      "tags": [
+        "Supervisory"
+      ]
+    }
+  },
+  {
+    "name": "GetBankTeller",
+    "title": "Get bank teller",
+    "description": "Get the teller of all banks.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "description": "The HTTP status code of the response."
+        },
+        "headers": {
+          "type": "object",
+          "description": "The response headers the API declares for this operation.",
+          "properties": {
+            "API-Version": {
+              "type": "string"
+            },
+            "Access-Control-Allow-Origin": {
+              "type": "string"
+            },
+            "Access-Control-Expose-Headers": {
+              "type": "string"
+            },
+            "X-JWS-Signature": {
+              "type": "string"
+            },
+            "X-Rate-Limit-Limit": {
+              "type": "string",
+              "description": "The maximum number of requests you\u0027re permitted to make in a window of 2 minutes."
+            }
+          }
+        },
+        "body": {
+          "examples": [
+            {
+              "gitHubProfile": "https://github.com/rbhanda"
+            },
+            {
+              "gitHubProfile": "https://github.com/erwinkramer"
+            }
+          ],
+          "type": "object",
+          "properties": {
+            "gitHubProfile": {
+              "maxLength": 70707070,
+              "type": [
+                "null",
+                "string"
+              ],
+              "description": "GitHub profile of the teller.",
+              "format": "uri"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "status",
+        "body"
+      ]
+    },
+    "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "readOnlyHint": true
+    },
+    "_meta": {
+      "tags": [
+        "Administrative"
+      ]
+    }
+  },
+  {
+    "name": "GetBankTellerReports",
+    "title": "Get bank teller reports",
+    "description": "Get the teller reports.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "description": "The HTTP status code of the response."
+        },
+        "headers": {
+          "type": "object",
+          "description": "The response headers the API declares for this operation.",
+          "properties": {
+            "API-Version": {
+              "type": "string"
+            },
+            "Access-Control-Allow-Origin": {
+              "type": "string"
+            },
+            "Access-Control-Expose-Headers": {
+              "type": "string"
+            },
+            "X-JWS-Signature": {
+              "type": "string"
+            },
+            "X-Rate-Limit-Limit": {
+              "type": "string",
+              "description": "The maximum number of requests you\u0027re permitted to make in a window of 2 minutes."
+            }
+          }
+        },
+        "body": {
+          "examples": [
+            {
+              "count": 2,
+              "data": [
+                {
+                  "name": "reportOfTheWeek.txt"
+                },
+                {
+                  "name": "dailyReview.txt"
+                }
+              ]
+            }
+          ],
+          "type": "object",
+          "properties": {
+            "data": {
+              "maxItems": 70707070,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "maxLength": 70707070,
+                    "pattern": ".*",
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "description": "Name of the report."
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "count": {
+              "maximum": 70707070,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "status",
+        "body"
+      ]
+    },
+    "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "readOnlyHint": true
+    },
+    "_meta": {
+      "tags": [
+        "Administrative"
+      ]
+    }
+  },
+  {
+    "name": "GetBankTellerSecretReports",
+    "title": "Get bank teller secret",
+    "description": "Get the teller secret reports.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "required": []
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "description": "The HTTP status code of the response."
+        },
+        "headers": {
+          "type": "object",
+          "description": "The response headers the API declares for this operation.",
+          "properties": {
+            "API-Version": {
+              "type": "string"
+            },
+            "Access-Control-Allow-Origin": {
+              "type": "string"
+            },
+            "Access-Control-Expose-Headers": {
+              "type": "string"
+            },
+            "X-JWS-Signature": {
+              "type": "string"
+            },
+            "X-Rate-Limit-Limit": {
+              "type": "string",
+              "description": "The maximum number of requests you\u0027re permitted to make in a window of 2 minutes."
+            }
+          }
+        },
+        "body": {
+          "examples": [
+            {
+              "count": 2,
+              "data": [
+                {
+                  "name": "reportOfTheWeek.txt"
+                },
+                {
+                  "name": "dailyReview.txt"
+                }
+              ]
+            }
+          ],
+          "type": "object",
+          "properties": {
+            "data": {
+              "maxItems": 70707070,
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "maxLength": 70707070,
+                    "pattern": ".*",
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "description": "Name of the report."
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "count": {
+              "maximum": 70707070,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "status",
+        "body"
+      ]
+    },
+    "annotations": {
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "readOnlyHint": true
+    },
+    "_meta": {
+      "tags": [
+        "Administrative"
+      ]
+    }
+  }
+]

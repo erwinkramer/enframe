@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup>
+    <!-- keep the AOT .dbg out of publish output (dotnet/sdk#33476) -->
+    <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
+    <DebugType Condition="'$(Configuration)' == 'Release'">none</DebugType>
+    <StackTraceSupport Condition="'$(Configuration)' == 'Release'">false</StackTraceSupport>
+    <EventSourceSupport Condition="'$(Configuration)' == 'Release'">false</EventSourceSupport>
+  </PropertyGroup>
+</Project>

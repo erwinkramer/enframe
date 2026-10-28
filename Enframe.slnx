@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src\Enframe.Schema\Enframe.Schema.csproj" />
+  <Project Path="src\Enframe.Mcp\Enframe.Mcp.csproj" />
+  <Project Path="src\Enframe.Mcp.Tests\Enframe.Mcp.Tests.csproj" />
+</Solution>

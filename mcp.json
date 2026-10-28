@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "enframe": {
+      "type": "streamable-http",
+      "url": "http://localhost.guanchen.nl:8080/mcp",
+      "protocolEra": "modern",
+      "oauth": {
+        "clientId": "b6997777-3799-4c55-b78a-4ce96e3d959c",
+        "callbackUrl": "http://localhost:6276/oauth/callback"
+      }
+    }
+  }
+}

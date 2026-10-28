@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Enframe.Mcp\Enframe.Mcp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Specs under test; drop new spec files in ..\..\specs\ and they are picked up. -->
+    <None Include="..\..\specs\*.json" LinkBase="Specs" CopyToOutputDirectory="PreserveNewest" />
+    <!-- Golden MCP schema output per spec; compare with what the MCP library generates. -->
+    <None Include="..\..\specs\expected\*.json" LinkBase="Specs\expected" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ModelContextProtocol" Version="2.3.*" />
+    <PackageReference Include="Testcontainers" Version="4.*" />
+    <PackageReference Include="TUnit" Version="1.*" />
+  </ItemGroup>
+
+</Project>

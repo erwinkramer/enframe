@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "enframe": {
+      "url": "http://localhost.guanchen.nl:8080/mcp",
+      "description": "Enframe sidecar demo",
+      "oauth": {
+        "clientId": "b6997777-3799-4c55-b78a-4ce96e3d959c",
+        "callbackUrl": "http://localhost:6276/oauth/callback"
+      }
+    }
+  }
+}
