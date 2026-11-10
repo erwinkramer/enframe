@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ModelContextProtocol" Version="2.3.*" />
+    <PackageReference Include="ModelContextProtocol" Version="2.4.0" />
     <PackageReference Include="Testcontainers" Version="4.*" />
     <PackageReference Include="TUnit" Version="1.*" />
   </ItemGroup>
