@@ -53,6 +53,8 @@ Finally, think of some creative way to reach it in a session, such as...:
 | Environment variable | Required | Description
 | -- | -- | --
 | `ASPNETCORE_HTTP_PORTS` | no | HTTP port to listen on; default `8080`
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | no | OTLP collector base URL that receives all telemetry; defaults to `http://localhost:4318`
+| `OTEL_SERVICE_NAME` | no | Service name tagged on all exported telemetry; defaults to `enframe` |
 | `Enframe__ApiBaseUrl` | no | Base URL of the target API that generated tools call; defaults to the first URL in the spec's `servers`, with server variables substituted by their defaults (a relative URL is resolved against the spec's location)
 | `Enframe__ApiKey` | conditional | API key sent for operations the spec protects with an apiKey scheme; required if the spec declares one
 | `Enframe__ApiSpecSource` | yes | OpenAPI spec to wrap: an http(s) URL (fetched at startup) or a file path relative to the executable

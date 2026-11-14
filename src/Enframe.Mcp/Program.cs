@@ -100,6 +100,9 @@ builder.Services.AddMcpServer(options =>
     .WithHttpTransport()
     .WithTools(tools);
 
+// OpenTelemetry: traces, metrics, and logs
+builder.Services.AddTelemetry();
+
 builder.Services.AddHealthChecks();
 
 var app = builder.Build();

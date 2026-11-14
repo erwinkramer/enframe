@@ -10,8 +10,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- Hosts the MCP server; transitively includes ModelContextProtocol.Core, whose Diagnostics class
+         emits the "Experimental.ModelContextProtocol" ActivitySource and Meter that Telemetry.cs
+         subscribes to. The Experimental prefix follows the MCP semantic conventions (still in
+         development); if they're ratified and the source/meter is renamed, update Telemetry.cs. -->
     <PackageReference Include="ModelContextProtocol.AspNetCore" Version="2.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="11.*" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.*" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.*" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.*" />
+    <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.*" />
   </ItemGroup>
 
   <ItemGroup>
